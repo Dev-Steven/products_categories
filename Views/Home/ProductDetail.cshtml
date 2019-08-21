@@ -1,0 +1,22 @@
+@model Product
+
+<h1 class="text-center">@Model.Name</h1>
+<hr>
+<div class="row">
+  <div class="col">
+    <h2 class="">Categories:</h2>
+    @foreach(var group in @Model.Groups)
+    {
+        <h4>- @group.Category.Name</h4>
+    }
+
+  </div>
+  <div class="col">
+      <h4>Add Category:</h4>
+      @{
+          Association newAssociation = new Association() {ProductId = Model.ProductId};
+      }
+      <partial Name="AddCategoryToProduct" model="newAssociation"/>
+  </div>  
+</div>
+
